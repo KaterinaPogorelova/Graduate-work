@@ -1,0 +1,43 @@
+.header__selectedUser {
+	margin: 0px 70px 0 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 260px;
+}
+
+.selectedUser__icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 20px;
+	width: 60px;
+	height: 60px;
+	border-radius: 10px;
+	background: #7B61FF;
+}
+
+.selectedUser__initials {
+	font-family: 'Exo 2', sans-serif;
+	font-size: 20px;
+	font-weight: 700;
+	color: #FFFFFF;
+}
+
+.selectedUser__user-name {
+	font-family: 'Exo 2', sans-serif;
+	font-size: 16px;
+	font-weight: 600;
+	color: #FFFFFF;
+	margin-right: 55px;
+}
+
+.header__selectedUser svg:hover {
+	cursor: pointer;
+}
+
+@media (max-width:1023px) {
+	.header__selectedUser {
+		display: none;
+	}
+}
