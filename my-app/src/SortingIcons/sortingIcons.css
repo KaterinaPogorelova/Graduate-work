@@ -1,0 +1,34 @@
+.sorting__icons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	list-style-type: none;
+	margin-bottom: 40px;
+}
+
+.sorting__icon {
+	background: #323537;
+	border-radius: 40px;
+	padding: 8px 30px 8px 24px;
+	display: flex;
+	align-items: center;
+}
+
+.icon__text {
+	color: white;
+}
+
+.sorting__icon svg {
+	margin-left: 12px;
+}
+
+@media(max-width:767px) {
+	.sorting__icons {
+		margin-bottom: 32px;
+		gap: 10px;
+	}
+
+	.sorting__icon {
+		padding: 8px 15px 8px 15px;
+	}
+}

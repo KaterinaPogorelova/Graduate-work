@@ -1,0 +1,23 @@
+.recomendations {
+	width: 100%;
+}
+
+.recomendations__title {
+	font-weight: 600;
+	font-size: 24px;
+	color: #FFFFFF;
+	margin-bottom: 40px;
+}
+
+.recomendations__item-wrapper {
+	width: 100%;
+	display: flex;
+	gap: 40px;
+	overflow: auto;
+	margin-bottom: 64px;
+}
+
+.recomendations__item-wrapper .main__item {
+	flex-shrink: 0;
+	max-width: initial;
+}

@@ -1,0 +1,203 @@
+.filter {
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-color: #242426;
+	width: 518px;
+	padding: 50px 40px;
+	z-index: 2;
+	border-radius: 20px 0px 0px 20px;
+}
+
+.filter__button--cross {
+	background: none;
+	border: none;
+	position: absolute;
+	top: 55px;
+	right: 42px;
+	width: 16px;
+	height: 16px;
+}
+
+.filter__button--cross:hover {
+	cursor: pointer;
+}
+
+.filter__button--cross svg {
+	width: 100%;
+	height: 100%;
+}
+
+.filter__title {
+	font-size: 24px;
+	font-weight: 600;
+	color: #fff;
+	margin-bottom: 50px;
+}
+
+.filter__subtitle {
+	display: block;
+	font-size: 16px;
+	font-weight: 600;
+	color: #fff;
+	margin-bottom: 10px;
+}
+
+.filter__sort-by {
+	margin-bottom: 70px;
+}
+
+.sort-by__buttons-wrapper {
+	width: 100%;
+}
+
+.sort-by__button {
+	border: 1px solid #323537;
+	color: #80858B;
+	border-radius: 10px 0px 0px 10px;
+	width: 50%;
+	padding: 16px 0px;
+	background: #242426;
+}
+
+.sort-by__button--active {
+	color: #fff;
+	background: #323537;
+}
+
+.sort-by__button:hover {
+	cursor: pointer;
+}
+
+.sort-by__button:last-child {
+	border-radius: 0px 10px 10px 0px;
+}
+
+.filter__by-name {
+	margin-bottom: 25px;
+}
+
+.filter__input {
+	width: 200px;
+	color: white;
+	background-color: #323537;
+	border: none;
+	border-radius: 10px;
+	padding: 16px 20px;
+}
+
+.filter__input:first-of-type {
+	margin-right: 38px;
+}
+
+.filter__input--large {
+	width: 100%;
+}
+
+.filter__input--large:first-of-type {
+	margin-right: 0;
+}
+
+.filter__by-genres {
+	margin-bottom: 24px;
+}
+
+.filter__genres-wrapper {
+	border-radius: 10px;
+	background: #323537;
+	padding: 12px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+}
+
+.filter__genre {
+	border: none;
+	background-color: #242426;
+	border-radius: 10px;
+	padding: 5px 15px;
+	color: #fff;
+}
+
+.filter__genre--active {
+	background-color: #7B61FF;
+}
+
+.filter__genre:hover {
+	cursor: pointer;
+}
+
+.filter__by-year {
+	margin-bottom: 24px;
+}
+
+.filter__by-ratig {
+	margin-bottom: 24px;
+}
+
+.filter__button-wrapper {
+	margin-top: 111px;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.filter__button {
+	width: 200px;
+	border-radius: 10px;
+	color: #fff;
+	border: none;
+	padding: 15px 0;
+}
+
+.filter__button:hover {
+	cursor: pointer;
+}
+
+.filter__button--clear {
+	background: #323537;
+}
+
+.filter__button--confirm {
+	background: #7B61FF;
+}
+
+@media (max-width:1023px) {
+	.filter__button-wrapper {
+		margin-top: 55px;
+	}
+}
+
+@media (max-width:767px) {
+	.filter {
+		width: 100vw;
+		border-radius: 0px;
+	}
+
+	.filter__title {
+		font-size: 20px;
+		margin-bottom: 32px;
+	}
+
+	.filter__input {
+		width: calc(50% - 24px);
+	}
+
+	.filter__input--large {
+		width: 100%;
+	}
+
+	.filter__input:first-of-type {
+		margin-right: 48px;
+	}
+
+	.filter__button-wrapper {
+		gap: 15px;
+		margin-top: 40px;
+		justify-content: center;
+	}
+
+	.filter__button {
+		width: 270px;
+	}
+}
