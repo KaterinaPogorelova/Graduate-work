@@ -1,17 +1,27 @@
 import './card.css'
-export const Card = () => {
+import { Movie, getMovieGenres } from '../getMovies'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+
+type Card = {
+	cardinfo: Movie
+}
+
+export const Card = ({ cardinfo }: Card) => {
+	const [genres, setGenres] = useState<string[]>([])
+	useEffect(() => { getMovieGenres(cardinfo.id).then((data) => setGenres(data)) }, [])
 	return (
-		<div className='main__item'>
+
+		<Link to={'/' + String(cardinfo.id)} className='main__item'>
 			<div className='item__img-wrapper'>
-				<img src="https://roost.nbcuni.com/bin/viewasset.html/content/dam/Peacock/Landing-Pages/originals/sick/sick-art.jpg/_jcr_content/renditions/original.JPEG" alt="movie" />
+				<img src={'https://image.tmdb.org/t/p/w342' + cardinfo.poster_path} alt={cardinfo.title} />
 			</div>
-			<p className='item__rating'>7.6</p>
-			<h3 className='item__title'>Sick</h3>
+			<p className='item__rating'>{cardinfo.vote_average}</p>
+			<h3 className='item__title'>{cardinfo.title}</h3>
 			<ul className='item__genres'>
-				<li className='item__genre'>Action</li>
-				<li className='item__genre'>Adventure</li>
-				<li className='item__genre'>Horror</li>
+				{genres.map((genre) => <li key={genre} className='item__genre'>{genre}</li>)}
 			</ul>
-		</div>
+		</Link>
+
 	)
 }
