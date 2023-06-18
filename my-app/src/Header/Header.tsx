@@ -8,7 +8,11 @@ import { Burger } from './Burger';
 import { Filter } from '../Filter/Filter';
 import { useState } from 'react';
 
-export const Header = () => {
+type HeaderProps = {
+	showMenu: () => void
+}
+
+export const Header = ({ showMenu }: HeaderProps) => {
 	const [filterShown, setFilterShown] = useState(false)
 
 	return (
@@ -22,7 +26,7 @@ export const Header = () => {
 					</div>
 					<SearchInput showFilter={() => setFilterShown(true)}></SearchInput>
 					<SelectedUser></SelectedUser>
-					<Burger></Burger>
+					<Burger showMenu={showMenu}></Burger>
 				</div>
 			</header></>)
 }

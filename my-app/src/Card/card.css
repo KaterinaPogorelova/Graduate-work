@@ -29,6 +29,14 @@
 	border-radius: 6px;
 }
 
+.item__rating--trend {
+	background: #7B61FF;
+}
+
+.item__rating--trend svg {
+	margin-right: 5px;
+}
+
 .item__title {
 	color: #FFFFFF;
 	font-weight: 700;

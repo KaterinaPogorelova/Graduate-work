@@ -1,9 +1,12 @@
-.header__selectedUser {
+.header__selectedUser-wrapper {
+	position: relative;
 	margin: 0px 70px 0 0;
+}
+
+.header__selectedUser {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 260px;
 }
 
 .selectedUser__icon {
@@ -32,12 +35,42 @@
 	margin-right: 55px;
 }
 
-.header__selectedUser svg:hover {
+.selectedUser__switch-btn {
+	border: none;
+	background: none;
+}
+
+.selectedUser__switch-btn:hover {
 	cursor: pointer;
+}
+
+.header__change-wrapper {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 2;
+	width: 100%;
+	background-color: #242426;
+	border-radius: 10px;
+}
+
+.header__change-btn {
+	display: block;
+	padding: 20px;
+	color: #fff;
+	border-bottom: 1px solid #323537;
+}
+
+.header__change-btn--violet {
+	color: #7B61FF;
 }
 
 @media (max-width:1023px) {
 	.header__selectedUser {
+		display: none;
+	}
+
+	.header__change-wrapper {
 		display: none;
 	}
 }

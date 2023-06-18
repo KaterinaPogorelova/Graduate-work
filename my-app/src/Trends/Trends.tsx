@@ -12,7 +12,7 @@ export const Trends = () => {
 	return (<>
 		<main className='main'>
 			<div className='main__item-wrapper'>
-				{moviesList.map((movie: Movie) => <Card key={movie.title} cardinfo={movie}></Card>)}
+				{moviesList.map((movie: Movie) => <Card key={movie.title} cardinfo={movie} isTrends></Card>)}
 			</div>
 			<button className='main__show-btn' onClick={() => {
 				setPage(page + 1)

@@ -53,10 +53,26 @@
 
 @media (max-width:1023px) {
 	.side--content {
+		position: absolute;
+		top: 0;
+		right: 0;
+		background: #000;
+		z-index: 2;
+		height: 100vh;
 		display: none;
 	}
 
+	.side--content--opened {
+		display: flex;
+	}
+
 	.menu {
-		display: none;
+		padding-top: 130px;
+	}
+}
+
+@media (max-width:1023px) {
+	.side--content {
+		width: 100%;
 	}
 }
