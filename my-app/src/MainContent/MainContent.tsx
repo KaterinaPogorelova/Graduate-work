@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 export const MainContent = () => {
 	const [moviesList, setMoviesList] = useState<Movie[]>([])
 	const [page, setPage] = useState(1)
-	useEffect(() => { getMovies(page).then((data) => data).then((movie) => setMoviesList([...moviesList, ...movie])) }, [page])
+	useEffect(() => { getMovies(page).then((movie) => setMoviesList([...moviesList, ...movie])) }, [page])
 	return (<>
 		<main className='main'>
 			<div className='main__item-wrapper'>
@@ -15,6 +15,7 @@ export const MainContent = () => {
 			</div>
 			<button className='main__show-btn' onClick={() => {
 				setPage(page + 1)
+				/* window.scrollTo(0, 2622) */
 			}}>Show More</button>
 		</main></>)
 }

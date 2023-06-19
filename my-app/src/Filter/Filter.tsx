@@ -56,9 +56,9 @@ export const Filter = ({ isVisible, closeFilter }: Filter) => {
 		<div className='filter__by-country'>
 			<div className='filter__input-wrapper'>
 				<label htmlFor='Countries' className='filter__subtitle'>Country</label>
-				<select name='Countries' id='Countries' className='filter__input filter__input--large' defaultValue={'United States of America'}>
+				<select name='Countries' id='Countries' className='filter__input filter__input--large'>
 					{countries.map((country) => {
-						return <option key={country + '-1'} value={country}>{country}</option>
+						return <option key={countries.indexOf(country)} value={country}>{country}</option>
 					})}
 				</select>
 			</div>
