@@ -9,10 +9,11 @@ import { Filter } from '../Filter/Filter';
 import { useState } from 'react';
 
 type HeaderProps = {
-	showMenu: () => void
+	showMenu: () => void,
+	handleSearch: (searchInputValue: string) => void
 }
 
-export const Header = ({ showMenu }: HeaderProps) => {
+export const Header = ({ showMenu, handleSearch }: HeaderProps) => {
 	const [filterShown, setFilterShown] = useState(false)
 
 	return (
@@ -24,7 +25,7 @@ export const Header = ({ showMenu }: HeaderProps) => {
 						<Logo1 />
 						<Logo2 />
 					</div>
-					<SearchInput showFilter={() => setFilterShown(true)}></SearchInput>
+					<SearchInput showFilter={() => setFilterShown(true)} handleSearch={handleSearch}></SearchInput>
 					<SelectedUser></SelectedUser>
 					<Burger showMenu={showMenu}></Burger>
 				</div>

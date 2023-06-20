@@ -5,6 +5,7 @@ const DETAILEDMOVIE = 'https://api.themoviedb.org/3/movie/'
 const GENRESURL = 'https://api.themoviedb.org/3/genre/movie/list?language=en'
 const COUNTRIESURL = 'https://api.themoviedb.org/3/configuration/countries'
 const RECOMMENDEDURL = 'https://api.themoviedb.org/3/movie/'
+const SEARCHMOVIESURL = 'https://api.themoviedb.org/3/search/movie?query=' /* 'https://api.themoviedb.org/3/search/movie?query=Harry&include_adult=false&language=en-US&page=1' */
 const page = '&page='
 const language = '?language=en-US'
 
@@ -33,7 +34,7 @@ export type DetailedMovie = {
 		poster_path: string,
 		backdrop_path: string
 	},
-	budget: number,
+	budget?: number,
 	genres: {
 		id: number,
 		name: string
@@ -45,21 +46,21 @@ export type DetailedMovie = {
 	original_title: string,
 	overview: string,
 	popularity: number,
-	poster_path: string,
-	production_companies:
+	poster_path?: string,
+	production_companies?:
 	{
 		id: number,
 		logo_path: string,
 		name: string,
 		origin_country: string
 	}[],
-	production_countries:
+	production_countries?:
 	{
 		iso_3166_1: string,
 		name: string
 	}[],
 	release_date: string,
-	revenue: number,
+	revenue?: number,
 	runtime: number,
 	spoken_languages:
 	{
@@ -91,6 +92,24 @@ export type RecommendedMovie = {
 	vote_average: number,
 	vote_count: number
 }
+
+export type SearchedMovie = {
+	adult: boolean,
+	backdrop_path: string,
+	genre_ids: number[],
+	id: number,
+	original_language: string,
+	original_title: string,
+	overview: string,
+	popularity: number,
+	poster_path: string,
+	release_date: string,
+	title: string,
+	video: boolean,
+	vote_average: number,
+	vote_count: number
+}
+
 type Genres = {
 	genres:
 	{
@@ -114,6 +133,13 @@ type MovieResponse = {
 type RecommendMovieResponse = {
 	page: number,
 	results: RecommendedMovie[],
+	total_pages: number,
+	total_results: number
+}
+
+type SearchedMovieResponse = {
+	page: number,
+	results: SearchedMovie[],
 	total_pages: number,
 	total_results: number
 }
@@ -167,7 +193,9 @@ export const getCountries = async () => {
 	const response = await fetch(countriesUrl, options);
 	const result: Country[] = await response.json();
 	const countries = result.map((country) => country.english_name)
-	return countries
+	const origCountries = new Set(countries)
+	const arrCountries = Array.from(origCountries)
+	return arrCountries
 }
 
 export const getRecommended = async (id: number) => {
@@ -175,4 +203,12 @@ export const getRecommended = async (id: number) => {
 	const response = await fetch(moviesUrl, options);
 	const results: RecommendMovieResponse = await response.json();
 	return results.results.slice(0, 4)
+}
+
+export const searchMovies = async (searchValue: string, page: number) => {
+	const searchUrl = new URL(SEARCHMOVIESURL + searchValue + '&include_adult=false&language=en-US&page=' + page)
+	const response = await fetch(searchUrl, options);
+	const results: SearchedMovieResponse = await response.json();
+	/* if (results.total_pages < page) return */
+	return results.results
 }

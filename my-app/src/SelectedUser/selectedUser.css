@@ -1,11 +1,11 @@
 .header__selectedUser-wrapper {
 	position: relative;
 	margin: 0px 70px 0 0;
+	width: 300px;
 }
 
 .header__selectedUser {
 	display: flex;
-	justify-content: center;
 	align-items: center;
 }
 
@@ -33,6 +33,7 @@
 	font-weight: 600;
 	color: #FFFFFF;
 	margin-right: 55px;
+	width: 150px;
 }
 
 .selectedUser__switch-btn {
@@ -52,7 +53,6 @@
 	width: 100%;
 	background-color: #242426;
 	border-radius: 10px;
-	display: none;
 }
 
 .header__change-btn {

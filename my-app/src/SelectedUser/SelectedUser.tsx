@@ -13,12 +13,12 @@ export const SelectedUser = () => {
 			<div className='selectedUser__icon'>
 				{user ? <p className='selectedUser__initials'>AL</p> : <User></User>}
 			</div>
-			<p className='selectedUser__user-name'>{user ? user : 'Sign In'}</p>
-			<button className='selectedUser__switch-btn'>{user ? <Down></Down> : <Right></Right>}</button>
+			{user ? <p className='selectedUser__user-name'>{user}</p> : <Link to='/' className='selectedUser__user-name'>Sign In</Link>}
+			<button className='selectedUser__switch-btn' onClick={() => setOpened(!opened)}>{opened ? <Down></Down> : <Right></Right>}</button>
 		</div>
-		<div className="header__change-wrapper">
-			<Link to='/settings' className='header__change-btn'>Edit profile</Link>
-			<Link to='#' className='header__change-btn header__change-btn--violet'>Log Out</Link>
+		<div className="header__change-wrapper" style={opened ? { display: 'block' } : { display: 'none' }}>
+			{user && <Link to='/settings' className='header__change-btn'>Edit profile</Link>}
+			<Link to='#' className='header__change-btn header__change-btn--violet'>{user ? 'Log Out' : 'Log In'}</Link>
 		</div>
 	</div>)
 }
