@@ -1,0 +1,127 @@
+.auth__container {
+	position: relative;
+	width: 100%;
+	min-height: 100vh;
+	height: 100%;
+	background-color: #000;
+}
+
+.auth__background-container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+	background: url('./backgroundImg.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.auth__background-gradient {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 3;
+	background-color: #000;
+	opacity: 0.5;
+}
+
+.auth__wrapper {
+	width: 574px;
+	background-color: #242426;
+	padding: 40px;
+	border-radius: 10px;
+	z-index: 4;
+}
+
+.auth__title {
+	color: #FFFFFF;
+	font-size: 24px;
+	font-weight: 600;
+	margin-bottom: 40px;
+}
+
+.auth__input-wrapper {
+	margin-bottom: 20px;
+}
+
+.auth__input-wrapper:last-of-type {
+	margin-bottom: 40px;
+}
+
+.auth__input-label {
+	color: #FFFFFF;
+	font-weight: 600;
+	font-size: 16px;
+	margin-bottom: 8px;
+}
+
+.auth__input {
+	display: block;
+	margin-top: 8px;
+	width: 100%;
+	background-color: #323537;
+	border: none;
+	border-radius: 10px;
+	padding: 15px;
+	color: #FFFFFF;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: #ffffff;
+	transition: background-color 5000s ease-in-out 0s;
+	box-shadow: inset 0 0 20px 20px #323537;
+}
+
+.auth__button {
+	width: 100%;
+	padding: 15px;
+	background: #7B61FF;
+	border: none;
+	border-radius: 10px;
+	color: #FFFFFF;
+	margin-bottom: 20px;
+}
+
+.auth__button:hover {
+	cursor: pointer;
+}
+
+.auth__text-wrapper {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.auth__text {
+	display: inline-block;
+	color: #80858B;
+	font-weight: 500;
+	font-size: 16px;
+	margin-right: 10px;
+}
+
+.auth__link {
+	color: #7B61FF;
+}
+
+@media(max-width:767px) {
+	.auth__background-container {
+		padding: 20px;
+	}
+
+	.auth__wrapper {
+		width: 100%;
+		padding: 20px;
+	}
+
+}
