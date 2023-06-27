@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import { Main } from '../Main/Main';
 import { Auth } from '../AuthReg/Auth';
 import { Reg } from '../AuthReg/Reg';
+import { useState } from 'react';
 
 export const Navigation = () => {
 	return (

@@ -14,11 +14,11 @@ export const SelectedUser = () => {
 				{user ? <p className='selectedUser__initials'>AL</p> : <User></User>}
 			</div>
 			{user ? <p className='selectedUser__user-name'>{user}</p> : <Link to='/auth' className='selectedUser__user-name'>Sign In</Link>}
-			<button className='selectedUser__switch-btn' onClick={() => setOpened(!opened)}>{opened ? <Down></Down> : <Right></Right>}</button>
+			{user && <button className='selectedUser__switch-btn' onClick={() => setOpened(!opened)}>{opened ? <Down></Down> : <Right></Right>}</button>}
 		</div>
-		<div className="header__change-wrapper" style={opened ? { display: 'block' } : { display: 'none' }}>
-			{user && <Link to='/settings' className='header__change-btn'>Edit profile</Link>}
-			<Link to='#' className='header__change-btn header__change-btn--violet'>{user ? 'Log Out' : 'Sign Up'}</Link>
-		</div>
+		{user && <div className="header__change-wrapper" style={opened ? { display: 'block' } : { display: 'none' }}>
+			<Link to='/settings' className='header__change-btn'>Edit profile</Link>
+			<Link to='/auth' className='header__change-btn header__change-btn--violet'>Log out</Link>
+		</div>}
 	</div>)
 }

@@ -29,10 +29,10 @@ export const Reg = () => {
 				</div>
 				<button type='submit' className='auth__button' onClick={(e) => {
 					e.preventDefault()
-				}}>Sign In</button>
+				}}>Sign Up</button>
 				<div className='auth__text-wrapper'>
-					<p className='auth__text'>Don’t have an account?</p>
-					<Link to='/reg' className='auth__link'>Sign Up</Link>
+					<p className='auth__text'>Already have an account?</p>
+					<Link to='/auth' className='auth__link'>Sign In</Link>
 				</div>
 			</form>
 		</div>

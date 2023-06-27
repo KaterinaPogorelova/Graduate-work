@@ -5,15 +5,18 @@ import { Trends } from '../Trends/Trends';
 import { Favourites } from '../Favourites/Favourites';
 import { Settings } from '../Settings/Settings';
 import { SearchResultsComp } from '../SearchResultsComp/SearchResultsComp';
+import { FilterParams } from '../getMovies';
+
 type NavProps = {
-	searchInputValue: string
+	searchInputValue: string,
+	filter: FilterParams
 }
 
-export const MainNavigation = ({ searchInputValue }: NavProps) => {
+export const MainNavigation = ({ searchInputValue, filter }: NavProps) => {
 	return (<>
 		<Routes>
 			<Route path='/'>
-				<Route index element={<MainContent></MainContent>}></Route>
+				<Route index element={<MainContent filterSort={filter}></MainContent>}></Route>
 				<Route path='trends' element={<Trends></Trends>}></Route>
 				<Route path='favourites' element={<Favourites></Favourites>}></Route>
 				<Route path='settings' element={<Settings></Settings>}></Route>

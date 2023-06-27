@@ -1,13 +1,16 @@
 
 const TRENDSSURL = 'https://api.themoviedb.org/3/movie/popular?language=en-US'
-const MOVIESURL = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US'
+const MOVIESURL = 'https://api.themoviedb.org/3/discover/movie'
 const DETAILEDMOVIE = 'https://api.themoviedb.org/3/movie/'
 const GENRESURL = 'https://api.themoviedb.org/3/genre/movie/list?language=en'
 const COUNTRIESURL = 'https://api.themoviedb.org/3/configuration/countries'
 const RECOMMENDEDURL = 'https://api.themoviedb.org/3/movie/'
-const SEARCHMOVIESURL = 'https://api.themoviedb.org/3/search/movie?query=' /* 'https://api.themoviedb.org/3/search/movie?query=Harry&include_adult=false&language=en-US&page=1' */
-const page = '&page='
+const SEARCHMOVIESURL = 'https://api.themoviedb.org/3/search/movie?query='
+const PAGE = '&page='
 const language = '?language=en-US'
+const VOTECOUNT = '&vote_count.gte=80'
+const SORTBY = '&sort_by='/* 'https://api.themoviedb.org/3/discover/movie?language=en-US&sort_by=vote_average.desc' */
+const GENRES = '&with_genres='
 
 export type Movie = {
 	adult: boolean,
@@ -143,6 +146,14 @@ type SearchedMovieResponse = {
 	total_pages: number,
 	total_results: number
 }
+export type FilterParams = {
+	sortBy?: 'vote_average.desc' | 'primary_release_date.desc',
+	genres?: string,
+	releaseDateGTE?: string,
+	releaseDateLTE?: string,
+	voteGTE?: number,
+	voteLTE?: number
+}
 
 const options = {
 	method: 'GET',
@@ -152,9 +163,28 @@ const options = {
 	}
 };
 
-export const getMovies = async (pageNum: number) => {
-	const moviesUrl = new URL(MOVIESURL + page + pageNum);
-	const response = await fetch(moviesUrl, options);
+export const getMovies = async (pageNum: number, { sortBy, genres, releaseDateGTE, releaseDateLTE, voteGTE, voteLTE }: FilterParams) => {
+	let moviesUrl = MOVIESURL + language + PAGE + pageNum + SORTBY + sortBy + VOTECOUNT;
+	if (genres) {
+		moviesUrl += GENRES + genres
+	}
+	if (releaseDateGTE && releaseDateGTE !== releaseDateLTE) {
+		moviesUrl += '&primary_release_date.gte=' + releaseDateGTE
+	}
+	if (releaseDateLTE && releaseDateGTE !== releaseDateLTE) {
+		moviesUrl += '&primary_release_date.lte=' + releaseDateLTE
+	}
+	if (releaseDateGTE && releaseDateLTE && releaseDateGTE === releaseDateLTE) {
+		moviesUrl += '&year=' + releaseDateGTE
+	}
+	if (voteGTE) {
+		moviesUrl += '&vote_average.gte=' + voteGTE
+	}
+	if (voteLTE) {
+		moviesUrl += '&vote_average.lte=' + voteLTE
+	}
+	const newUrl = new URL(moviesUrl)
+	const response = await fetch(newUrl, options);
 	const results: MovieResponse = await response.json();
 	return results.results
 }
@@ -174,7 +204,7 @@ export const getMovie = async (id: number) => {
 	return result
 }
 export const getTrends = async (pageNum: number) => {
-	const moviesUrl = new URL(TRENDSSURL + page + pageNum);
+	const moviesUrl = new URL(TRENDSSURL + PAGE + pageNum);
 	const response = await fetch(moviesUrl, options);
 	const results: MovieResponse = await response.json();
 	return results.results
@@ -184,8 +214,8 @@ export const getGenres = async () => {
 	const genresUrl = new URL(GENRESURL);
 	const response = await fetch(genresUrl, options);
 	const result: Genres = await response.json();
-	const genres = result.genres.map((genre) => genre.name)
-	return genres
+	/* const genres = result.genres.map((genre) => genre.name) */
+	return result.genres
 }
 
 export const getCountries = async () => {

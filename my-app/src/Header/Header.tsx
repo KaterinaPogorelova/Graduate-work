@@ -7,18 +7,20 @@ import { SelectedUser } from '../SelectedUser/SelectedUser';
 import { Burger } from './Burger';
 import { Filter } from '../Filter/Filter';
 import { useState } from 'react';
+import { FilterParams } from '../getMovies';
 
 type HeaderProps = {
 	showMenu: () => void,
-	handleSearch: (searchInputValue: string) => void
+	handleSearch: (searchInputValue: string) => void,
+	setFilterParams: ({ sortBy, genres, releaseDateGTE, releaseDateLTE, voteGTE, voteLTE }: FilterParams) => void
 }
 
-export const Header = ({ showMenu, handleSearch }: HeaderProps) => {
+export const Header = ({ showMenu, handleSearch, setFilterParams }: HeaderProps) => {
 	const [filterShown, setFilterShown] = useState(false)
 
 	return (
 		<>
-			<Filter isVisible={filterShown} closeFilter={() => setFilterShown(false)}></Filter>
+			<Filter isVisible={filterShown} closeFilter={() => setFilterShown(false)} setFilterParams={setFilterParams}></Filter>
 			<header className="header">
 				<div className="header__container">
 					<div className="header__logo-wrapper">
