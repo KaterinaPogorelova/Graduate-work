@@ -66,6 +66,10 @@
 	border-radius: 10px 0 0 10px;
 }
 
+.fullScreen__btn--favs--active {
+	background: #80858B;
+}
+
 .fullScreen__btn--share {
 	border-radius: 0 10px 10px 0;
 }

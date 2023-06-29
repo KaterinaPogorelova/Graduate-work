@@ -105,7 +105,7 @@ export const Filter = ({ isVisible, closeFilter, setFilterParams }: Filter) => {
 		<div className='filter__button-wrapper'>
 			<button className='filter__button filter__button--clear' onClick={() => {
 				setFilterParams({ sortBy: 'vote_average.desc' })
-				setActiveSort('Rating')
+				setActiveSort('Year')
 				setGenresSort([])
 			}}>Clear filter</button>
 			<button className='filter__button filter__button--confirm' onClick={() => {

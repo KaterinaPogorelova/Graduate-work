@@ -2,14 +2,15 @@ import { useEffect, useState } from 'react'
 import '../MainContent/mainContent.css'
 import { Card } from '../Card/Card'
 import { SortingIcons } from '../SortingIcons/SortingIcon'
-import { searchMovies, SearchedMovie } from '../getMovies'
+import { searchMovies, SearchedMovie, DetailedMovie } from '../getMovies'
 import { useNavigate } from 'react-router-dom'
 
 type SearchProps = {
-	searchInputValue: string
+	searchInputValue: string,
+	favourites: DetailedMovie[]
 }
 
-export const SearchResultsComp = ({ searchInputValue }: SearchProps) => {
+export const SearchResultsComp = ({ searchInputValue, favourites }: SearchProps) => {
 	const [searchedMoviesList, setSearchMoviesList] = useState<SearchedMovie[]>([])
 	const [page, setPage] = useState(1)
 	const [searchValue, setSearchValue] = useState<string>('')
@@ -30,7 +31,7 @@ export const SearchResultsComp = ({ searchInputValue }: SearchProps) => {
 	return (<>
 		<div className='main'>
 			<div className='main__item-wrapper'>
-				{searchedMoviesList.map((movie: SearchedMovie) => <Card key={movie.id} cardinfo={movie}></Card>)}
+				{searchedMoviesList.map((movie: SearchedMovie) => <Card key={movie.id} cardinfo={movie} favourites={favourites}></Card>)}
 			</div>
 			{searchedMoviesList.length !== 0 && <button className='main__show-btn' onClick={() => setPage(page + 1)}>Show More</button>}
 		</div></>)

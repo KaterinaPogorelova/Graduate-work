@@ -8,21 +8,19 @@ import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { DetailedMovie, getMovie, getMovieGenres } from '../getMovies'
 
-export const FullScreenMovie = () => {
+type FullScreenProps = {
+	addFavs: (favourite: DetailedMovie) => void,
+	favourites: DetailedMovie[],
+	removeFav: (id: number) => void
+}
+export const FullScreenMovie = ({ addFavs, favourites, removeFav }: FullScreenProps) => {
 	const [movie, setMovie] = useState<DetailedMovie | null>(null)
 	const [genres, setGenres] = useState<string[]>([])
 
 	const params = useParams()
 	useEffect(() => { params.movieId && getMovie(Number(params.movieId)).then(movie => setMovie(movie)) }, [])
 	useEffect(() => { getMovieGenres(Number(params.movieId)).then((data) => setGenres(data)) }, [])
-
-	const getDate = (date: string) => {
-		const year = date.slice(0, 4)
-		const month = date.slice(5, 2)
-		const day = date.slice(8, 2)
-		const newDate = day + ' ' + month + ' ' + year
-		return newDate
-	}
+	const isFavourite = favourites.find((favmovie) => movie && favmovie.id === movie.id)
 
 	if (!movie) {
 		return <h1>Movie not found</h1>
@@ -47,7 +45,8 @@ export const FullScreenMovie = () => {
 					{!movie.poster_path && <p>Not Found</p>}
 				</div>
 				<div className='fullScreen__btns-wrapper'>
-					<button className='fullScreen__btn fullScreen__btn--favs'>
+					<button className={isFavourite ? 'fullScreen__btn fullScreen__btn--favs fullScreen__btn--favs--active' : 'fullScreen__btn fullScreen__btn--favs'}
+						onClick={() => isFavourite ? removeFav(movie.id) : addFavs(movie)}>
 						<Favs />
 					</button>
 					<button className='fullScreen__btn fullScreen__btn--share'>
@@ -117,7 +116,7 @@ export const FullScreenMovie = () => {
 						<p className='fullScreen__prop-desc'>{movie?.original_language}</p>
 					</div>
 				</div>
-				{movie && <Recomendations id={movie.id}></Recomendations>}
+				{movie && <Recomendations id={movie.id} favourites={favourites}></Recomendations>}
 			</div>
 		</div>
 	)
