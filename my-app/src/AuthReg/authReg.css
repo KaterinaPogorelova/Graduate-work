@@ -89,6 +89,18 @@ input:-webkit-autofill:active {
 	margin-bottom: 20px;
 }
 
+.auth__button--link {
+	width: 200px;
+	display: block;
+	padding: 15px;
+	text-align: center;
+	background: #7B61FF;
+	border: none;
+	border-radius: 10px;
+	color: #FFFFFF;
+	margin: 20px auto;
+}
+
 .auth__button:hover {
 	cursor: pointer;
 }
@@ -108,6 +120,18 @@ input:-webkit-autofill:active {
 
 .auth__link {
 	color: #7B61FF;
+}
+
+.auth__subtitle {
+	color: #FFFFFF;
+	font-weight: 600;
+	font-size: 16px;
+	margin: 8px 0;
+}
+
+.auth__text {
+	color: #FFFFFF;
+	font-size: 14px;
 }
 
 @media(max-width:767px) {
