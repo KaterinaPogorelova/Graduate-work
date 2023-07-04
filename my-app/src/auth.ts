@@ -3,21 +3,35 @@ import { url } from "inspector"
 const DOMAIN = 'https://studapi.teachmeskills.by'
 const ADDUSER = '/auth/users/'
 const ACTIVATEUSER = '/auth/users/activation/'
+const CREATETOKENSURL = '/auth/jwt/create/'
+const CHECKMEURL = '/auth/users/me/'
+const REFRESHURL = '/auth/jwt/refresh/'
 
-type NewUser = {
+export type NewUser = {
 	username: string,
 	email: string,
 	password: string
 }
 
-type ActivationKeys = {
+export type ActivationKeys = {
 	uid: string,
 	token: string
 }
 
-type Login = {
+export type Login = {
 	email: string,
 	password: string
+}
+
+export type Tokens = {
+	access: string,
+	refresh: string
+}
+
+export type CheckedUser = {
+	username: string,
+	id: number,
+	email: string,
 }
 
 export const postUser = async (user: NewUser) => {
@@ -43,6 +57,43 @@ export const activateUser = async (keys: ActivationKeys) => {
 	return result
 }
 
-/* export getTokens = async () => {
+export const getTokens = async (user: Login) => {
+	const tokensUrl = new URL(DOMAIN + CREATETOKENSURL)
+	const response = await fetch(tokensUrl, {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify(user)
+	})
+	const tokens: Tokens = await response.json()
+	return tokens
+}
 
-} */
+export const checkMe = async () => {
+	const token = localStorage.getItem('accessToken')
+	const checkUrl = new URL(DOMAIN + CHECKMEURL)
+	const response = await fetch(checkUrl, {
+		method: 'GET',
+		headers: { "Authorization": `Bearer ${token}` }
+	})
+	if (response.status === 401) {
+		const refresh = localStorage.getItem('refreshToken')
+		if (!refresh) return
+		const token = await refreshJWT()
+		localStorage.setItem('accessToken', token.access)
+		await checkMe()
+	}
+	const user: CheckedUser = await response.json()
+	return user
+}
+
+export const refreshJWT = async () => {
+	const refresh = localStorage.getItem('refreshToken')
+	const refreshUrl = new URL(DOMAIN + REFRESHURL)
+	const response = await fetch(refreshUrl, {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({ refresh })
+	})
+	const newToken = await response.json()
+	return newToken
+}

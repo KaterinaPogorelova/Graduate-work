@@ -5,8 +5,7 @@ import { postUser } from '../auth'
 import { useState } from 'react'
 
 export const Reg = () => {
-	const [firstName, setFirstName] = useState('')
-	const [lastName, setLastName] = useState('')
+	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [passwordConf, setPasswordConf] = useState('')
@@ -28,12 +27,8 @@ export const Reg = () => {
 			<form className='auth__wrapper'>
 				<h3 className='auth__title'>Sign Up</h3>
 				<div className='auth__input-wrapper'>
-					<label htmlFor='fname' className='auth__input-label'>First name</label>
-					<input type='text' name='fname' className='auth__input' placeholder='Your first name' required onChange={(e) => setFirstName(e.target.value)}></input>
-				</div>
-				<div className='auth__input-wrapper'>
-					<label htmlFor='lname' className='auth__input-label'>Last name</label>
-					<input type='text' name='lname' className='auth__input' placeholder='Your last name' required onChange={(e) => setLastName(e.target.value)}></input>
+					<label htmlFor='fname' className='auth__input-label'>Name</label>
+					<input type='text' name='fname' className='auth__input' placeholder='Your first name' required onChange={(e) => setName(e.target.value)}></input>
 				</div>
 				<div className='auth__input-wrapper'>
 					<label htmlFor='email' className='auth__input-label'>Email</label>
@@ -52,12 +47,12 @@ export const Reg = () => {
 						setPasswordConf(e.target.value)
 						confirmPassword(password, e.target.value)
 					}}></input>
-					<p style={{ color: 'red', opacity: passConfirmed ? '0' : '1' }}>Passwords must match</p>
+					<p style={{ color: 'red', opacity: passConfirmed !== false ? '0' : '1' }}>Passwords must match</p>
 				</div>
 				<button type='submit' className='auth__button' onClick={(e) => {
 					e.preventDefault()
 					if (passConfirmed) {
-						postUser({ username: firstName + lastName, email, password })
+						postUser({ username: name, email, password })
 						navigate('/redirect')
 					} else {
 						return
