@@ -1,14 +1,16 @@
 import { Menu } from "../Menu/Menu"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { Header } from "../Header/Header"
 import { MainNavigation } from "../MainNavigation/MainNavigation"
 import { FilterParams } from "../getMovies"
+import { ThemeContext } from "../context"
 
 export const Main = () => {
 	const [menuOpened, setMenuOpened] = useState(false)
 	const [searchInputValue, setSearchInputValue] = useState('')
 	const [filter, setFilter] = useState<FilterParams>({ sortBy: 'primary_release_date.desc' })
+	const theme = useContext(ThemeContext)
 	const navigate = useNavigate()
 	const getSearchValue = (searchInputValue: string) => {
 		setSearchInputValue(searchInputValue)
@@ -29,7 +31,7 @@ export const Main = () => {
 			return
 		}
 	}, [searchInputValue])
-	return (<div className='container'>
+	return (<div className='container' style={theme === 'light' ? { background: '#fff' } : { background: '#000' }}>
 		<Header showMenu={showMenu} handleSearch={getSearchValue} setFilterParams={setFilterParams}></Header>
 		<div className='content--wrapper'>
 			<Menu isOpenedMob={menuOpened} showMenu={showMenu}></Menu>

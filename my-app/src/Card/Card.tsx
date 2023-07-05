@@ -1,10 +1,11 @@
 import './card.css'
 import { Movie, getMovieGenres, DetailedMovie } from '../getMovies'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { ReactComponent as Flame } from './Flame.svg'
 import { ReactComponent as NotFound } from '../FullScreenMovie/image-not-found-icon.svg'
 import { ReactComponent as Fav } from './Favs.svg'
+import { ThemeContext } from '../context'
 
 type Card = {
 	cardinfo: Movie | DetailedMovie;
@@ -14,6 +15,7 @@ type Card = {
 
 export const Card = ({ cardinfo, isTrends, favourites }: Card) => {
 	const [genres, setGenres] = useState<string[]>([])
+	const theme = useContext(ThemeContext)
 	useEffect(() => { getMovieGenres(cardinfo.id).then((data) => setGenres(data)) }, [])
 	const isFavourite = favourites.find((favmovie) => favmovie.id === cardinfo.id)
 	return (
@@ -27,7 +29,7 @@ export const Card = ({ cardinfo, isTrends, favourites }: Card) => {
 				</div>}
 			</div>
 			<p className={isTrends ? 'item__rating item__rating--trend' : 'item__rating'}>{isTrends && <Flame />}{cardinfo.vote_average}</p>
-			<div><h3 className='item__title'>{cardinfo.title}</h3>
+			<div><h3 className='item__title' style={theme === 'dark' ? { color: '#fff' } : { color: '#000' }}>{cardinfo.title}</h3>
 				<ul className='item__genres'>
 					{genres.map((genre) => <li key={genre} className='item__genre'>{genre}</li>)}
 				</ul></div>

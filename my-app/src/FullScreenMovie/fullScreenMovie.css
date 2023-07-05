@@ -51,7 +51,6 @@
 
 .fullScreen__btn {
 	display: block;
-	background: #323537;
 	border: none;
 	width: calc(50% - 1px);
 	padding: 19px 0px;
@@ -64,10 +63,6 @@
 .fullScreen__btn--favs {
 	margin-right: 1px;
 	border-radius: 10px 0 0 10px;
-}
-
-.fullScreen__btn--favs--active {
-	background: #80858B;
 }
 
 .fullScreen__btn--share {
@@ -107,7 +102,6 @@
 	margin: 15px 0 35px;
 	font-weight: 600;
 	font-size: 40px;
-	color: #FFFFFF;
 }
 
 .fullScreen__rating-wrapper {
@@ -141,7 +135,6 @@
 }
 
 .fullScreen__duration {
-	background: #323537;
 	color: #FFFFFF;
 	font-weight: 600;
 	padding: 6px;
@@ -152,7 +145,6 @@
 	margin: 40px 0;
 	text-align: justify;
 	width: 100%;
-	color: #FFFFFF;
 	font-weight: 500;
 }
 
@@ -176,7 +168,6 @@
 
 .fullScreen__prop-desc {
 	width: calc(100% - 120px);
-	color: #FFFFFF;
 }
 
 @media(max-width:1023px) {

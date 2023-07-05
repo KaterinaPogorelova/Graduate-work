@@ -2,7 +2,6 @@
 	position: fixed;
 	top: 0;
 	right: 0;
-	background-color: #242426;
 	width: 518px;
 	max-height: 100%;
 	overflow: auto;
@@ -33,7 +32,6 @@
 .filter__title {
 	font-size: 24px;
 	font-weight: 600;
-	color: #fff;
 	margin-bottom: 50px;
 }
 
@@ -80,7 +78,7 @@
 }
 
 .filter__input {
-	width: 200px;
+	width: 199px;
 	color: white;
 	background-color: #323537;
 	border: none;
@@ -115,14 +113,14 @@
 
 .filter__genre {
 	border: none;
-	background-color: #242426;
+	background: #242426;
 	border-radius: 10px;
 	padding: 5px 15px;
 	color: #fff;
 }
 
 .filter__genre--active {
-	background-color: #7B61FF;
+	background: #7B61FF;
 }
 
 .filter__genre:hover {

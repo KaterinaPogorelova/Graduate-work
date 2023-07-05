@@ -25,7 +25,7 @@
 .header__logo-wrapper svg:last-child {
 	margin-top: 2px;
 	margin-left: 2px;
-	fill: white;
+	fill: #fff;
 }
 
 .header__searchInput-wrapper {
@@ -36,16 +36,13 @@
 	flex-grow: 1;
 	height: 60px;
 	border-radius: 10px;
-	overflow: hidden;
 }
 
 .header__searchInput {
 	width: 100%;
 	height: 100%;
-	color: white;
-	background-color: #323537;
-	border: none;
 	padding-left: 20px;
+	border-radius: 10px;
 }
 
 .header__searchInput::placeholder {

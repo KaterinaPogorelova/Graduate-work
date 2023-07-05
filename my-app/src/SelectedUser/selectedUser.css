@@ -51,20 +51,19 @@
 	left: 0;
 	z-index: 2;
 	width: 100%;
-	background-color: #323537;
 	border-radius: 10px;
+	border: 1px solid #242426;
+	border-bottom: none;
+	overflow: hidden;
 }
 
 .header__change-btn {
 	display: block;
 	padding: 20px;
-	color: #fff;
 	border-bottom: 1px solid #242426;
 }
 
-.header__change-btn:last-of-type {
-	border-bottom: none;
-}
+
 
 .header__change-btn--violet {
 	color: #7B61FF;
