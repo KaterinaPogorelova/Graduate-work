@@ -67,7 +67,7 @@ export const Settings = () => {
 					</div>}
 				</div>
 				<div className='settings__box'>
-					<div>
+					<div style={{ marginBottom: '25px' }}>
 						<h5 className='box__title' style={theme === 'dark' ? { color: '#fff' } : { color: '#000' }}>New password</h5>
 						<input type="password" className='box__text box__input' value={newPass} placeholder='New password' style={theme === 'dark' ? { background: '#323537', color: '#fff' } : { background: '#AFB2B6', color: '#000' }}
 							onChange={(e) => {
