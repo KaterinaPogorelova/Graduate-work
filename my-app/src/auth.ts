@@ -6,6 +6,8 @@ const ACTIVATEUSER = '/auth/users/activation/'
 const CREATETOKENSURL = '/auth/jwt/create/'
 const CHECKMEURL = '/auth/users/me/'
 const REFRESHURL = '/auth/jwt/refresh/'
+const REFRESHPASSWORD = '/auth/users/set_password/'
+const REFRESHNAMEURL = '/auth/users/me/'
 
 export type NewUser = {
 	username: string,
@@ -34,6 +36,16 @@ export type CheckedUser = {
 	email: string,
 }
 
+export type Passwords = {
+	new_password: string,
+	current_password: string
+}
+
+export type ErrorPasswords = {
+	new_password?: string[],
+	current_password?: string[]
+}
+
 export const postUser = async (user: NewUser) => {
 	const postUserUrl = new URL(DOMAIN + ADDUSER)
 	const response = await fetch(postUserUrl, {
@@ -42,7 +54,6 @@ export const postUser = async (user: NewUser) => {
 		body: JSON.stringify(user)
 	})
 	const result = await response.json()
-	console.log(result)
 	return result
 }
 
@@ -96,4 +107,42 @@ export const refreshJWT = async () => {
 	})
 	const newToken = await response.json()
 	return newToken
+}
+
+export const changePassword = async (passwords: Passwords) => {
+	const changeUrl = new URL(DOMAIN + REFRESHPASSWORD)
+	const token = localStorage.getItem('accessToken')
+	const response = await fetch(changeUrl, {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json', "Authorization": `Bearer ${token}` },
+		body: JSON.stringify(passwords)
+	})
+	if (response.status === 401) {
+		const refresh = localStorage.getItem('refreshToken')
+		if (!refresh) return
+		const token = await refreshJWT()
+		localStorage.setItem('accessToken', token.access)
+		await changePassword(passwords)
+	}
+	const result: Passwords | ErrorPasswords = response.status !== 204 ? await response.json() : 'Success'
+	return result
+}
+
+export const changeName = async (username: string) => {
+	const changeNameUrl = new URL(DOMAIN + REFRESHNAMEURL)
+	const token = localStorage.getItem('accessToken')
+	const response = await fetch(changeNameUrl, {
+		method: 'PUT',
+		headers: { 'Content-Type': 'application/json', "Authorization": `Bearer ${token}` },
+		body: JSON.stringify({ username })
+	})
+	if (response.status === 401) {
+		const refresh = localStorage.getItem('refreshToken')
+		if (!refresh) return
+		const token = await refreshJWT()
+		localStorage.setItem('accessToken', token.access)
+		await changeName(username)
+	}
+	const result = await response.json()
+	return result
 }

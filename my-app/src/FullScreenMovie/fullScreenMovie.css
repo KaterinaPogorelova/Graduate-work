@@ -6,6 +6,7 @@
 	width: calc(100% - 367px);
 	display: flex;
 	gap: 40px;
+	padding-right: 30px;
 }
 
 .fullScreen__mobile--view {

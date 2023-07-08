@@ -11,6 +11,7 @@ import { Filter } from '../Filter/Filter';
 import { useState, useContext } from 'react';
 import { FilterParams } from '../getMovies';
 import { ThemeContext } from "../context"
+import { Link } from 'react-router-dom';
 
 type HeaderProps = {
 	showMenu: () => void,
@@ -26,10 +27,10 @@ export const Header = ({ showMenu, handleSearch, setFilterParams }: HeaderProps)
 			<Filter isVisible={filterShown} closeFilter={() => setFilterShown(false)} setFilterParams={setFilterParams}></Filter>
 			<header className="header">
 				<div className="header__container">
-					<div className="header__logo-wrapper">
+					<Link to='' className="header__logo-wrapper">
 						<Logo1 />
 						{theme === 'dark' ? <Logo2w /> : <Logo2b />}
-					</div>
+					</Link>
 					<SearchInput showFilter={() => setFilterShown(true)} handleSearch={handleSearch}></SearchInput>
 					<SelectedUser></SelectedUser>
 					<Burger showMenu={showMenu}></Burger>

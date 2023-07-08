@@ -24,7 +24,7 @@ export const FullScreenMovie = ({ addFavs, favourites, removeFav }: FullScreenPr
 	const isFavourite = favourites.find((favmovie) => movie && favmovie.id === movie.id)
 
 	if (!movie) {
-		return <h1>Movie not found</h1>
+		return <h1 style={{ color: theme === 'dark' ? '#fff' : '#000', textAlign: 'center', width: '100%' }}>Movie not found</h1>
 	}
 
 	return (
@@ -70,10 +70,10 @@ export const FullScreenMovie = ({ addFavs, favourites, removeFav }: FullScreenPr
 					{movie.overview}
 				</p>
 				<div className='fullScreen__props'>
-					<div className='fullScreen__prop'>
+					{movie.release_date && <div className='fullScreen__prop'>
 						<p className='fullScreen__prop-name'>Year</p>
 						<p className='fullScreen__prop-desc' style={theme === 'dark' ? { color: '#fff' } : { color: '#000' }}>{movie.release_date.slice(0, 4)}</p>
-					</div>
+					</div>}
 					<div className='fullScreen__prop'>
 						<p className='fullScreen__prop-name'>Released</p>
 						<p className='fullScreen__prop-desc' style={theme === 'dark' ? { color: '#fff' } : { color: '#000' }}>{movie.release_date}</p>

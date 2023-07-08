@@ -9,7 +9,7 @@ const SEARCHMOVIESURL = 'https://api.themoviedb.org/3/search/movie?query='
 const PAGE = '&page='
 const language = '?language=en-US'
 const VOTECOUNT = '&vote_count.gte=80'
-const SORTBY = '&sort_by='/* 'https://api.themoviedb.org/3/discover/movie?language=en-US&sort_by=vote_average.desc' */
+const SORTBY = '&sort_by='
 const GENRES = '&with_genres='
 
 export type Movie = {
@@ -18,7 +18,7 @@ export type Movie = {
 	genre_ids: number[],
 	id: number,
 	original_title: string,
-	overview: string,//description
+	overview: string,
 	popularity: number,
 	poster_path: string,
 	release_date: string,
@@ -146,6 +146,13 @@ type SearchedMovieResponse = {
 	total_pages: number,
 	total_results: number
 }
+
+type ErrorGenres = {
+	success: boolean,
+	status_code: number,
+	status_message: string
+}
+
 export type FilterParams = {
 	sortBy?: 'vote_average.desc' | 'primary_release_date.desc',
 	genres?: string,
@@ -193,7 +200,7 @@ export const getMovieGenres = async (id: number) => {
 	const movieUrl = new URL(DETAILEDMOVIE + id + language);
 	const response = await fetch(movieUrl, options);
 	const result: DetailedMovie = await response.json();
-	const genres = result.genres.map((genre) => genre.name)
+	const genres = result.genres ? result.genres.map((genre) => genre.name) : []
 	return genres
 }
 
@@ -201,7 +208,7 @@ export const getMovie = async (id: number) => {
 	const movieUrl = new URL(DETAILEDMOVIE + id + language);
 	const response = await fetch(movieUrl, options);
 	const result: DetailedMovie = await response.json();
-	return result
+	return result.id ? result : null
 }
 export const getTrends = async (pageNum: number) => {
 	const moviesUrl = new URL(TRENDSSURL + PAGE + pageNum);
@@ -214,7 +221,6 @@ export const getGenres = async () => {
 	const genresUrl = new URL(GENRESURL);
 	const response = await fetch(genresUrl, options);
 	const result: Genres = await response.json();
-	/* const genres = result.genres.map((genre) => genre.name) */
 	return result.genres
 }
 
@@ -232,13 +238,12 @@ export const getRecommended = async (id: number) => {
 	const moviesUrl = new URL(RECOMMENDEDURL + id + '/recommendations' + language);
 	const response = await fetch(moviesUrl, options);
 	const results: RecommendMovieResponse = await response.json();
-	return results.results.slice(0, 4)
+	return results.results ? results.results.slice(0, 4) : []
 }
 
 export const searchMovies = async (searchValue: string, page: number) => {
 	const searchUrl = new URL(SEARCHMOVIESURL + searchValue + '&include_adult=false&language=en-US&page=' + page)
 	const response = await fetch(searchUrl, options);
 	const results: SearchedMovieResponse = await response.json();
-	/* if (results.total_pages < page) return */
 	return results.results
 }
