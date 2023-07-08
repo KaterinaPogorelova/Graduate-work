@@ -1,6 +1,5 @@
 import './mainContent.css'
 import { Card } from '../Card/Card'
-import { SortingIcons } from '../SortingIcons/SortingIcon'
 import { Movie, getMovies, FilterParams, DetailedMovie } from '../getMovies'
 import { useEffect, useState, useContext } from 'react'
 import { ThemeContext } from '../context'

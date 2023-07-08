@@ -1,7 +1,6 @@
 import { useEffect, useState, useContext } from 'react'
 import '../MainContent/mainContent.css'
 import { Card } from '../Card/Card'
-import { SortingIcons } from '../SortingIcons/SortingIcon'
 import { searchMovies, SearchedMovie, DetailedMovie } from '../getMovies'
 import { useNavigate } from 'react-router-dom'
 import { ThemeContext } from '../context'
