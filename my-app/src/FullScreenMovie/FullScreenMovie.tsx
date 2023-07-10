@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom'
 import { useEffect, useState, useContext } from 'react'
 import { DetailedMovie, getMovie, getMovieGenres } from '../getMovies'
 import { ThemeContext } from '../context'
+import { checkMe } from '../auth'
 
 type FullScreenProps = {
 	addFavs: (favourite: DetailedMovie) => void,
@@ -17,14 +18,23 @@ type FullScreenProps = {
 export const FullScreenMovie = ({ addFavs, favourites, removeFav }: FullScreenProps) => {
 	const [movie, setMovie] = useState<DetailedMovie | null>(null)
 	const [genres, setGenres] = useState<string[]>([])
+	const [user, setUser] = useState<string | null>(null)
+	const [isCopied, setisCopied] = useState(false)
 	const theme = useContext(ThemeContext)
 	const params = useParams()
+
 	useEffect(() => { params.movieId && getMovie(Number(params.movieId)).then(movie => setMovie(movie)) }, [])
 	useEffect(() => { getMovieGenres(Number(params.movieId)).then((data) => setGenres(data)) }, [])
+	useEffect(() => { checkMe().then((me) => me && setUser(me.username)) }, [])
 	const isFavourite = favourites.find((favmovie) => movie && favmovie.id === movie.id)
 
 	if (!movie) {
 		return <h1 style={{ color: theme === 'dark' ? '#fff' : '#000', textAlign: 'center', width: '100%' }}>Movie not found</h1>
+	}
+	const checkClipBoard = async () => {
+		const clipboard = await navigator.clipboard.readText()
+		const isCopied = clipboard === window.location.href
+		return isCopied
 	}
 
 	return (
@@ -45,15 +55,20 @@ export const FullScreenMovie = ({ addFavs, favourites, removeFav }: FullScreenPr
 					{!movie.poster_path && <NotFound />}
 					{!movie.poster_path && <p>Not Found</p>}
 				</div>
-				<div className='fullScreen__btns-wrapper'>
+				{user && <div className='fullScreen__btns-wrapper'>
 					<button className='fullScreen__btn fullScreen__btn--favs' style={isFavourite ? (theme === 'dark' ? { background: '#80858B' } : { background: '#80858B', border: '1px solid #80858B' }) : (theme === 'dark' ? { background: '#323537' } : { background: '#fff', border: '1px solid #AFB2B6' })}
 						onClick={() => isFavourite ? removeFav(movie.id) : addFavs(movie)}>
 						<Favs />
 					</button>
-					<button className='fullScreen__btn fullScreen__btn--share' style={theme === 'dark' ? { background: '#323537' } : { background: '#fff', border: '1px solid #AFB2B6' }}>
+					<button className='fullScreen__btn fullScreen__btn--share' style={theme === 'dark' ? { background: '#323537' } : { background: '#fff', border: '1px solid #AFB2B6' }}
+						onClick={() => {
+							navigator.clipboard.writeText(window.location.href)
+							setisCopied(true)
+						}}>
 						<Share />
 					</button>
-				</div>
+				</div>}
+				{user && isCopied && <p style={{ color: 'red', marginTop: '10px', textAlign: 'center' }}>Link added to your clickboard</p>}
 			</div>
 			<div className='fullScreen__info-wrapper'>
 				<div className="fullScreen__not-mobile--view">

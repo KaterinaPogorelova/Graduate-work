@@ -45,12 +45,6 @@ export const Filter = ({ isVisible, closeFilter, setFilterParams }: Filter) => {
 				}}>Year</button>
 			</div>
 		</div>
-		{/* <div className='filter__by-name'>
-			<div className='filter__input-wrapper'>
-				<label className='filter__subtitle'>Full or short movie name</label>
-				<input className='filter__input filter__input--large' type='text' placeholder='Your Text'></input>
-			</div>
-		</div> */}
 		<div className='filter__by-genres'>
 			<h3 className='filter__subtitle' style={theme === 'dark' ? { color: '#fff' } : { color: '#000' }}>Genre</h3>
 			<div className='filter__genres-wrapper' style={theme === 'dark' ? { background: '#323537', border: 'none' } : { background: '#fff', border: '1px solid #323537' }}>
@@ -94,24 +88,16 @@ export const Filter = ({ isVisible, closeFilter, setFilterParams }: Filter) => {
 				}}></input>
 			</div>
 		</div>
-		{/* <div className='filter__by-country'>
-			<div className='filter__input-wrapper'>
-				<label htmlFor='Countries' className='filter__subtitle'>Country</label>
-				<select name='Countries' id='Countries' className='filter__input filter__input--large'>
-					{countries.map((country) => {
-						return <option key={countries.indexOf(country)} value={country}>{country}</option>
-					})}
-				</select>
-			</div>
-		</div> */}
 		<div className='filter__button-wrapper'>
 			<button className='filter__button filter__button--clear' onClick={() => {
 				setFilterParams({ sortBy: 'primary_release_date.desc' })
 				setActiveSort('Year')
 				setGenresSort([])
+				closeFilter()
 			}} style={theme === 'dark' ? { background: '#323537', color: '#fff' } : { background: '#AFB2B6', color: '#000' }}>Clear filter</button>
 			<button className='filter__button filter__button--confirm' onClick={() => {
 				setFilterParams({ sortBy: sort, genres: genresSort.join(','), releaseDateGTE: minYear, releaseDateLTE: maxYear, voteGTE: minRate, voteLTE: maxRate })
+				closeFilter()
 			}}>Show Results</button>
 		</div>
 	</div>)
