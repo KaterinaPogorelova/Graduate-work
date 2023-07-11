@@ -39,15 +39,14 @@
 
 .box__text {
 	font-weight: 500;
-	color: #fff;
 	padding: 16px 20px;
 	border-radius: 10px;
-	background-color: #323537;
 }
 
 .box__input {
+	font-weight: 500;
+	padding: 16px 20px;
 	width: 100%;
-	border: none;
 }
 
 .settings__theme-window {
@@ -69,19 +68,13 @@
 
 .settings__btn {
 	width: 280px;
-	background: #323537;
 	padding: 16px;
-	color: #fff;
 	border: none;
 	border-radius: 10px;
 }
 
 .settings__btn--violet {
 	background: #7B61FF;
-}
-
-.settings__btn:hover {
-	cursor: pointer;
 }
 
 @media(max-width:1023px) {

@@ -41,10 +41,6 @@
 	background: none;
 }
 
-.selectedUser__switch-btn:hover {
-	cursor: pointer;
-}
-
 .header__change-wrapper {
 	position: absolute;
 	top: 100%;

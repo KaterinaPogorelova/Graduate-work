@@ -8,3 +8,64 @@
     translate: all 0.3s ease-out;
     font-family: 'Exo 2', sans-serif;
   }
+
+  input {
+    padding-left: 20px;
+    border-radius: 10px;
+  }
+
+  .input--dark {
+    background: rgb(50, 53, 55);
+    border: 2px solid transparent;
+    color: rgb(255, 255, 255);
+  }
+
+  .input--light {
+    background: rgb(255, 255, 255);
+    border: 2px solid rgb(175, 178, 182);
+    color: rgb(0, 0, 0);
+  }
+
+  .input--dark:focus,
+  .input--light:focus {
+    border: 2px solid #7B61FF;
+    outline: none;
+  }
+
+  .input--dark:-webkit-autofill,
+  .input--dark:-webkit-autofill:hover,
+  .input--dark:-webkit-autofill:focus,
+  .input--dark:-webkit-autofill:active {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #ffffff;
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: inset 0 0 30px 30px #323537;
+  }
+
+  .input--light:-webkit-autofill,
+  .input--light:-webkit-autofill:hover,
+  .input--light:-webkit-autofill:focus,
+  .input--light:-webkit-autofill:active {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #000;
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: none;
+  }
+
+  button:hover {
+    cursor: pointer;
+  }
+
+  .main-btn--dark {
+    background: #323537;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+  }
+
+  .main-btn--light {
+    background: #AFB2B6;
+    color: #000;
+    border: none;
+    border-radius: 10px;
+  }

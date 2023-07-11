@@ -11,8 +11,8 @@ export const SearchInput = ({ showFilter, handleSearch }: SearchProps) => {
 	const theme = useContext(ThemeContext)
 	return (
 		<div className='header__searchInput-wrapper'>
-			<input className='header__searchInput' style={theme === 'dark' ? { background: '#323537', border: 'none', color: '#fff' } : { background: '#fff', border: '1px solid #AFB2B6', color: '#000' }} type='search' placeholder='Search' name='Search' onChange={(e) => handleSearch(e.target.value)}>
+			<input className={theme === 'dark' ? 'input--dark header__searchInput' : 'input--light header__searchInput'} type='search' placeholder='Search' name='Search' onChange={(e) => handleSearch(e.target.value)}>
 			</input>
-			<FilterBtn onClick={() => showFilter()}></FilterBtn>
+			<button className='header__filter-btn'><FilterBtn onClick={() => showFilter()}></FilterBtn></button>
 		</div>)
 }

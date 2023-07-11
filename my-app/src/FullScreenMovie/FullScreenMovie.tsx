@@ -31,11 +31,6 @@ export const FullScreenMovie = ({ addFavs, favourites, removeFav }: FullScreenPr
 	if (!movie) {
 		return <h1 style={{ color: theme === 'dark' ? '#fff' : '#000', textAlign: 'center', width: '100%' }}>Movie not found</h1>
 	}
-	const checkClipBoard = async () => {
-		const clipboard = await navigator.clipboard.readText()
-		const isCopied = clipboard === window.location.href
-		return isCopied
-	}
 
 	return (
 		<div className='fullScreen'>
@@ -45,7 +40,7 @@ export const FullScreenMovie = ({ addFavs, favourites, removeFav }: FullScreenPr
 				</ul>
 				<h1 className='fullScreen__title' style={theme === 'dark' ? { color: '#fff' } : { color: '#000' }}>{movie.title}</h1>
 				<div className='fullScreen__rating-wrapper'>
-					<p className='fullScreen__rating'>{movie.vote_average}</p>
+					<p className='fullScreen__rating'>{movie.vote_average.toFixed(1)}</p>
 					<p className='fullScreen__duration'>{movie.runtime + 'min'}</p>
 				</div>
 			</div>
@@ -77,7 +72,7 @@ export const FullScreenMovie = ({ addFavs, favourites, removeFav }: FullScreenPr
 					</ul>
 					<h1 className='fullScreen__title' style={theme === 'dark' ? { color: '#fff' } : { color: '#000' }}>{movie.title}</h1>
 					<div className='fullScreen__rating-wrapper'>
-						<p className='fullScreen__rating'>{movie.vote_average}</p>
+						<p className='fullScreen__rating'>{movie.vote_average.toFixed(1)}</p>
 						<p className='fullScreen__duration' style={theme === 'dark' ? { background: '#323537' } : { background: '#AFB2B6' }}>{movie.runtime + 'min'}</p>
 					</div>
 				</div>

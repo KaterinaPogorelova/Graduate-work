@@ -57,10 +57,6 @@
 	padding: 19px 0px;
 }
 
-.fullScreen__btn {
-	cursor: pointer;
-}
-
 .fullScreen__btn--favs {
 	margin-right: 1px;
 	border-radius: 10px 0 0 10px;
@@ -68,6 +64,10 @@
 
 .fullScreen__btn--share {
 	border-radius: 0 10px 10px 0;
+}
+
+.fullScreen__btn--share:active {
+	background: #80858B;
 }
 
 .fullScreen__genres {

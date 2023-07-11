@@ -47,11 +47,11 @@ export const Settings = () => {
 			<div className='settings__info-window' style={theme === 'dark' ? { background: '#242426' } : { background: '#fff', border: '1px solid #AFB2B6' }}>
 				<div className='settings__box'>
 					<h5 className='box__title' style={theme === 'dark' ? { color: '#fff' } : { color: '#000' }}>Name</h5>
-					<p className='box__text' style={theme === 'dark' ? { background: '#323537', color: '#fff' } : { background: '#AFB2B6', color: '#000' }}>{name}</p>
+					<p className='box__text' style={theme === 'dark' ? { background: '#80858B', color: '#AFB2B6' } : { background: '#AFB2B6', color: '#fff' }}>{name}</p>
 				</div>
 				<div className='settings__box'>
 					<h5 className='box__title' style={theme === 'dark' ? { color: '#fff' } : { color: '#000' }}>Email</h5>
-					<p className='box__text' style={theme === 'dark' ? { background: '#323537', color: '#fff' } : { background: '#AFB2B6', color: '#000' }}>{email}</p>
+					<p className='box__text' style={theme === 'dark' ? { background: '#80858B', color: '#AFB2B6' } : { background: '#AFB2B6', color: '#fff' }}>{email}</p>
 				</div>
 			</div>
 		</div>}
@@ -60,7 +60,7 @@ export const Settings = () => {
 			<div className='settings__info-window' style={theme === 'dark' ? { background: '#242426' } : { background: '#fff', border: '1px solid #AFB2B6' }}>
 				<div className='settings__box'>
 					<h5 className='box__title' style={theme === 'dark' ? { color: '#fff' } : { color: '#000' }}>Password</h5>
-					<input type="password" className='box__text box__input' value={curPass} placeholder='Your password' style={theme === 'dark' ? { background: '#323537', color: '#fff' } : { background: '#AFB2B6', color: '#000' }}
+					<input type="password" className={theme === 'dark' ? 'box__input input--dark' : 'box__input input--light'} value={curPass} placeholder='Your password'
 						onChange={(e) => setCurPass(e.target.value)} />
 					{error && <div style={{ marginTop: '5px' }}>
 						{error.map((err: string) => <p style={{ color: 'red' }} key={err.slice((err.length - 5), 4)}>{err}</p>)}
@@ -69,7 +69,7 @@ export const Settings = () => {
 				<div className='settings__box'>
 					<div style={{ marginBottom: '25px' }}>
 						<h5 className='box__title' style={theme === 'dark' ? { color: '#fff' } : { color: '#000' }}>New password</h5>
-						<input type="password" className='box__text box__input' value={newPass} placeholder='New password' style={theme === 'dark' ? { background: '#323537', color: '#fff' } : { background: '#AFB2B6', color: '#000' }}
+						<input type="password" className={theme === 'dark' ? 'box__input input--dark' : 'box__input input--light'} value={newPass} placeholder='New password'
 							onChange={(e) => {
 								setNewPass(e.target.value)
 								confirmPassword(e.target.value, newPassconf)
@@ -77,7 +77,7 @@ export const Settings = () => {
 					</div>
 					<div>
 						<h5 className='box__title' style={theme === 'dark' ? { color: '#fff' } : { color: '#000' }}>Confirm password</h5>
-						<input type="password" className='box__text box__input' value={newPassconf} placeholder='Confirm password' style={theme === 'dark' ? { background: '#323537', color: '#fff' } : { background: '#AFB2B6', color: '#000' }}
+						<input type="password" className={theme === 'dark' ? 'box__input input--dark' : 'box__input input--light'} value={newPassconf} placeholder='Confirm password'
 							onChange={(e) => {
 								setNewPassConf(e.target.value)
 								confirmPassword(newPass, e.target.value)
@@ -94,7 +94,7 @@ export const Settings = () => {
 			<div className='settings__info-window' style={theme === 'dark' ? { background: '#242426' } : { background: '#fff', border: '1px solid #AFB2B6' }}>
 				<div className='settings__box'>
 					<h5 className='box__title' style={theme === 'dark' ? { color: '#fff' } : { color: '#000' }}>New username</h5>
-					<input type="text" className='box__text box__input' value={newName} placeholder='Your new username' style={theme === 'dark' ? { background: '#323537', color: '#fff' } : { background: '#AFB2B6', color: '#000' }}
+					<input type="text" className={theme === 'dark' ? 'box__input input--dark' : 'box__input input--light'} value={newName} placeholder='Your new username'
 						onChange={(e) => setNewName(e.target.value)} />
 					{namerr && <div style={{ marginTop: '5px' }}>
 						{namerr.map((err: string) => <p style={{ color: 'red' }} key={err.slice((err.length - 5), 4)}>{err}</p>)}
@@ -113,7 +113,7 @@ export const Settings = () => {
 			</div>
 		</div>
 		<div className='settings__btns-wrapper'>
-			<button className='settings__btn' style={theme === 'dark' ? { background: '#323537', color: '#fff' } : { background: '#AFB2B6', color: '#000' }} onClick={() => {
+			<button className={theme === 'dark' ? 'main-btn--dark settings__btn' : 'main-btn--light settings__btn'} onClick={() => {
 				setCurPass('')
 				setNewPass('')
 				setNewPassConf('')

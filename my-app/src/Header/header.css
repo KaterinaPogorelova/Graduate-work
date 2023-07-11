@@ -41,22 +41,18 @@
 .header__searchInput {
 	width: 100%;
 	height: 100%;
-	padding-left: 20px;
-	border-radius: 10px;
 }
 
 .header__searchInput::placeholder {
 	margin-left: 20px;
 }
 
-.header__searchInput-wrapper svg {
+.header__filter-btn {
 	position: absolute;
 	right: 22px;
 	top: 22px;
-}
-
-.header__searchInput-wrapper svg:hover {
-	cursor: pointer;
+	background: none;
+	border: none;
 }
 
 .header__burger {

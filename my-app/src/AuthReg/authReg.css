@@ -55,21 +55,7 @@
 	display: block;
 	margin-top: 8px;
 	width: 100%;
-	background-color: #323537;
-	border: none;
-	border-radius: 10px;
 	padding: 15px;
-	color: #FFFFFF;
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: #ffffff;
-	transition: background-color 5000s ease-in-out 0s;
-	box-shadow: inset 0 0 20px 20px #323537;
 }
 
 .auth__button {
@@ -92,10 +78,6 @@ input:-webkit-autofill:active {
 	border-radius: 10px;
 	color: #FFFFFF;
 	margin: 20px auto;
-}
-
-.auth__button:hover {
-	cursor: pointer;
 }
 
 .auth__text-wrapper {

@@ -19,11 +19,11 @@ export const Auth = () => {
 				<h3 className='auth__title' style={theme === 'dark' ? { color: '#fff' } : { color: '#000' }}>Sign In</h3>
 				<div className='auth__input-wrapper'>
 					<label htmlFor='email' className='auth__input-label' style={theme === 'dark' ? { color: '#fff' } : { color: '#000' }}>Email</label>
-					<input type='email' name='email' className='auth__input' style={theme === 'dark' ? { background: '#323537', border: 'none', color: '#fff' } : { background: '#fff', border: '1px solid #AFB2B6', color: '#000' }} placeholder='Your email' required onChange={(e) => setEmail(e.target.value)}></input>
+					<input type='email' name='email' className={theme === 'dark' ? 'input--dark auth__input' : 'input--light auth__input'} placeholder='Your email' required onChange={(e) => setEmail(e.target.value)}></input>
 				</div>
 				<div className='auth__input-wrapper'>
 					<label htmlFor='password' className='auth__input-label' style={theme === 'dark' ? { color: '#fff' } : { color: '#000' }}>Password</label>
-					<input type='password' name='password' className='auth__input' style={theme === 'dark' ? { background: '#323537', border: 'none', color: '#fff' } : { background: '#fff', border: '1px solid #AFB2B6', color: '#000' }} placeholder='Your password' required onChange={(e) => setPassword(e.target.value)}></input>
+					<input type='password' name='password' className={theme === 'dark' ? 'input--dark auth__input' : 'input--light auth__input'} placeholder='Your password' required onChange={(e) => setPassword(e.target.value)}></input>
 				</div>
 				<p style={{ color: 'red', opacity: error ? '1' : '0', marginBottom: '10px' }}>No active account found with the given credentials</p>
 				<button type='submit' className='auth__button' onClick={(e) => {

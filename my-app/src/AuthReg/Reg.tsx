@@ -31,23 +31,23 @@ export const Reg = () => {
 				<h3 className='auth__title' style={theme === 'dark' ? { color: '#fff' } : { color: '#000' }}>Sign Up</h3>
 				<div className='auth__input-wrapper'>
 					<label htmlFor='fname' className='auth__input-label' style={theme === 'dark' ? { color: '#fff' } : { color: '#000' }}>Name</label>
-					<input type='text' name='fname' className='auth__input' style={theme === 'dark' ? { background: '#323537', border: 'none', color: '#fff' } : { background: '#fff', border: '1px solid #AFB2B6', color: '#000' }} placeholder='Your first name' required onChange={(e) => setName(e.target.value)}></input>
+					<input type='text' name='fname' className={theme === 'dark' ? 'input--dark auth__input' : 'input--light auth__input'} placeholder='Your first name' required onChange={(e) => setName(e.target.value)}></input>
 				</div>
 				<div className='auth__input-wrapper'>
 					<label htmlFor='email' className='auth__input-label' style={theme === 'dark' ? { color: '#fff' } : { color: '#000' }}>Email</label>
-					<input type='email' name='email' className='auth__input' style={theme === 'dark' ? { background: '#323537', border: 'none', color: '#fff' } : { background: '#fff', border: '1px solid #AFB2B6', color: '#000' }} placeholder='Your email' required onChange={(e) => setEmail(e.target.value)}></input>
+					<input type='email' name='email' className={theme === 'dark' ? 'input--dark auth__input' : 'input--light auth__input'} placeholder='Your email' required onChange={(e) => setEmail(e.target.value)}></input>
 					{errorEmail && errorEmail.map((err: string) => <p style={{ color: 'red', marginTop: '5px' }} key={errorEmail.indexOf(err)}>{err}</p>)}
 				</div>
 				<div className='auth__input-wrapper'>
 					<label htmlFor='password' className='auth__input-label' style={theme === 'dark' ? { color: '#fff' } : { color: '#000' }}>Password</label>
-					<input type='password' name='password' className='auth__input' style={theme === 'dark' ? { background: '#323537', border: 'none', color: '#fff' } : { background: '#fff', border: '1px solid #AFB2B6', color: '#000' }} placeholder='Your password' required onChange={(e) => {
+					<input type='password' name='password' className={theme === 'dark' ? 'input--dark auth__input' : 'input--light auth__input'} placeholder='Your password' required onChange={(e) => {
 						setPassword(e.target.value)
 						confirmPassword(e.target.value, passwordConf)
 					}}></input>
 				</div>
 				<div className='auth__input-wrapper'>
 					<label htmlFor='confpassword' className='auth__input-label' style={theme === 'dark' ? { color: '#fff' } : { color: '#000' }}>Confirm password</label>
-					<input type='password' name='confpassword' className='auth__input' style={theme === 'dark' ? { background: '#323537', border: 'none', color: '#fff' } : { background: '#fff', border: '1px solid #AFB2B6', color: '#000' }} placeholder='Confirm password' required onChange={(e) => {
+					<input type='password' name='confpassword' className={theme === 'dark' ? 'input--dark auth__input' : 'input--light auth__input'} placeholder='Confirm password' required onChange={(e) => {
 						setPasswordConf(e.target.value)
 						confirmPassword(password, e.target.value)
 					}}></input>

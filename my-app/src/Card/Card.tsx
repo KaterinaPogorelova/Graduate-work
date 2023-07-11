@@ -28,7 +28,7 @@ export const Card = ({ cardinfo, isTrends, favourites }: Card) => {
 					<Fav />
 				</div>}
 			</div>
-			<p className={isTrends ? 'item__rating item__rating--trend' : 'item__rating'}>{isTrends && <Flame />}{cardinfo.vote_average}</p>
+			<p className={isTrends ? 'item__rating item__rating--trend' : 'item__rating'}>{isTrends && <Flame />}{cardinfo.vote_average.toFixed(1)}</p>
 			<div><h3 className='item__title' style={theme === 'dark' ? { color: '#fff' } : { color: '#000' }}>{cardinfo.title}</h3>
 				<ul className='item__genres'>
 					{genres.map((genre) => <li key={genre} className='item__genre'>{genre}</li>)}

@@ -66,7 +66,7 @@
 }
 
 .sort-by__button:hover {
-	cursor: pointer;
+	color: #fff
 }
 
 .sort-by__button:last-child {
@@ -79,10 +79,6 @@
 
 .filter__input {
 	width: 199px;
-	color: white;
-	background-color: #323537;
-	border: none;
-	border-radius: 10px;
 	padding: 16px 20px;
 }
 
