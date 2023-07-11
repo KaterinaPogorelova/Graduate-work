@@ -34,15 +34,17 @@
 	}
 }
 
+@media(max-width:1007px) {
+	.main__item-wrapper {
+		gap: 30px;
+		justify-content: center;
+	}
+}
+
 @media(max-width:767px) {
 	.main {
 		width: 100%;
 		padding: 0px 25px 0px;
-	}
-
-	.main__item-wrapper {
-		gap: 30px;
-		justify-content: center;
 	}
 
 	.main__show-btn {

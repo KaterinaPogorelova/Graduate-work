@@ -69,3 +69,10 @@
     border: none;
     border-radius: 10px;
   }
+
+  .main-btn--confirm {
+    background: #7B61FF;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+  }

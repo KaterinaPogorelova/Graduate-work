@@ -51,11 +51,11 @@ export const FullScreenMovie = ({ addFavs, favourites, removeFav }: FullScreenPr
 					{!movie.poster_path && <p>Not Found</p>}
 				</div>
 				{user && <div className='fullScreen__btns-wrapper'>
-					<button className='fullScreen__btn fullScreen__btn--favs' style={isFavourite ? (theme === 'dark' ? { background: '#80858B' } : { background: '#80858B', border: '1px solid #80858B' }) : (theme === 'dark' ? { background: '#323537' } : { background: '#fff', border: '1px solid #AFB2B6' })}
+					<button className={isFavourite ? (theme == 'dark' ? 'fullScreen__btn--dark fullScreen__btn--dark-active fullScreen__btn--favs' : 'fullScreen__btn--light fullScreen__btn--light-active fullScreen__btn--favs') : (theme == 'dark' ? 'fullScreen__btn--dark fullScreen__btn--favs' : 'fullScreen__btn--light fullScreen__btn--favs')}
 						onClick={() => isFavourite ? removeFav(movie.id) : addFavs(movie)}>
 						<Favs />
 					</button>
-					<button className='fullScreen__btn fullScreen__btn--share' style={theme === 'dark' ? { background: '#323537' } : { background: '#fff', border: '1px solid #AFB2B6' }}
+					<button className={theme == 'dark' ? 'fullScreen__btn--dark fullScreen__btn--share' : 'fullScreen__btn--light fullScreen__btn--share'}
 						onClick={() => {
 							navigator.clipboard.writeText(window.location.href)
 							setisCopied(true)

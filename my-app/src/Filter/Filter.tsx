@@ -35,11 +35,11 @@ export const Filter = ({ isVisible, closeFilter, setFilterParams }: Filter) => {
 		<div className='filter__sort-by'>
 			<h3 className='filter__subtitle' style={theme === 'dark' ? { color: '#fff' } : { color: '#000' }}>Sort By</h3>
 			<div className='sort-by__buttons-wrapper'>
-				<button className='sort-by__button' style={(activeSort === 'Rating' ? (theme === 'dark' ? { color: '#fff', background: '#323537' } : { color: '#000', background: '#fff' }) : (theme === 'dark' ? { background: '#242426', color: '#80858B' } : { background: '#AFB2B6', color: '#80858B' }))} onClick={() => {
+				<button className={activeSort === 'Rating' ? (theme === 'dark' ? 'sort-by__button--dark sort-by__button--active-dark' : 'sort-by__button--light sort-by__button--active-light') : (theme == 'dark' ? 'sort-by__button--dark' : 'sort-by__button--light')} onClick={() => {
 					setActiveSort('Rating')
 					setSort('vote_average.desc')
 				}}>Rating</button>
-				<button className='sort-by__button' style={(activeSort === 'Year' ? (theme === 'dark' ? { color: '#fff', background: '#323537' } : { color: '#000', background: '#fff' }) : (theme === 'dark' ? { background: '#242426', color: '#80858B' } : { background: '#AFB2B6', color: '#80858B' }))} onClick={() => {
+				<button className={activeSort === 'Year' ? (theme === 'dark' ? 'sort-by__button--dark sort-by__button--active-dark' : 'sort-by__button--light sort-by__button--active-light') : (theme == 'dark' ? 'sort-by__button--dark' : 'sort-by__button--light')} onClick={() => {
 					setActiveSort('Year')
 					setSort('primary_release_date.desc')
 				}}>Year</button>
@@ -89,13 +89,13 @@ export const Filter = ({ isVisible, closeFilter, setFilterParams }: Filter) => {
 			</div>
 		</div>
 		<div className='filter__button-wrapper'>
-			<button className='filter__button filter__button--clear' onClick={() => {
+			<button className={theme === 'dark' ? 'filter__button main-btn--dark' : 'filter__button main-btn--light'} onClick={() => {
 				setFilterParams({ sortBy: 'primary_release_date.desc' })
 				setActiveSort('Year')
 				setGenresSort([])
 				closeFilter()
-			}} style={theme === 'dark' ? { background: '#323537', color: '#fff' } : { background: '#AFB2B6', color: '#000' }}>Clear filter</button>
-			<button className='filter__button filter__button--confirm' onClick={() => {
+			}}>Clear filter</button>
+			<button className='filter__button main-btn--confirm' onClick={() => {
 				setFilterParams({ sortBy: sort, genres: genresSort.join(','), releaseDateGTE: minYear, releaseDateLTE: maxYear, voteGTE: minRate, voteLTE: maxRate })
 				closeFilter()
 			}}>Show Results</button>

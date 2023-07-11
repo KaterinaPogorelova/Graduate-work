@@ -69,12 +69,6 @@
 .settings__btn {
 	width: 280px;
 	padding: 16px;
-	border: none;
-	border-radius: 10px;
-}
-
-.settings__btn--violet {
-	background: #7B61FF;
 }
 
 @media(max-width:1023px) {

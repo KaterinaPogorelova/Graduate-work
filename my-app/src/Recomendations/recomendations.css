@@ -21,3 +21,20 @@
 	flex-shrink: 0;
 	max-width: initial;
 }
+
+.recomendations__item-wrapper .main__item .item__img-wrapper {
+	height: 400px;
+}
+
+@media (max-width:1023px) {
+	.recomendations__item-wrapper .main__item .item__img-wrapper {
+		height: 320px;
+	}
+}
+
+@media (max-width:767px) {
+	.recomendations__item-wrapper .main__item .item__img-wrapper {
+		width: 232px;
+		height: 350px;
+	}
+}

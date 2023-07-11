@@ -50,11 +50,30 @@
 	margin-top: 32px;
 }
 
-.fullScreen__btn {
+.fullScreen__btn--dark {
 	display: block;
 	border: none;
 	width: calc(50% - 1px);
 	padding: 19px 0px;
+	background: #323537;
+}
+
+.fullScreen__btn--dark-active {
+	background: #80858B;
+}
+
+.fullScreen__btn--light-active {
+	background: #80858B;
+	border: 1px solid #80858B;
+}
+
+.fullScreen__btn--light {
+	display: block;
+	border: none;
+	width: calc(50% - 1px);
+	padding: 19px 0px;
+	background: #fff;
+	border: 1px solid #AFB2B6;
 }
 
 .fullScreen__btn--favs {

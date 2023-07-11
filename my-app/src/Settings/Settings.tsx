@@ -118,7 +118,7 @@ export const Settings = () => {
 				setNewPass('')
 				setNewPassConf('')
 			}}>Cancel</button>
-			<button className='settings__btn settings__btn--violet' onClick={() => {
+			<button className='settings__btn main-btn--confirm' onClick={() => {
 				if (passConfirmed && curPass !== '' && newPass !== '') {
 					changePassword({ new_password: newPass, current_password: curPass }).then((data) => {
 						if (data && data.current_password && typeof data.current_password !== 'string') {

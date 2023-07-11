@@ -10,14 +10,15 @@
 .item__img-wrapper {
 	position: relative;
 	width: 100%;
-	max-height: 357px;
+	height: 400px;
 	overflow: hidden;
+	border: 2px solid #AFB2B6;
 	border-radius: 20px;
 }
 
 .item__img-wrapper--empty {
 	background: rgb(170, 166, 166);
-	height: 357px;
+	height: 400px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -101,9 +102,13 @@
 	margin-right: 0px;
 }
 
-@media(max-width:1150px) {
+@media(max-width:1170px) {
+	.item__img-wrapper {
+		height: 300px;
+	}
+
 	.item__img-wrapper--empty {
-		height: 280px;
+		height: 300px;
 	}
 }
 

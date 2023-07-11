@@ -19,7 +19,7 @@ export const Card = ({ cardinfo, isTrends, favourites }: Card) => {
 	useEffect(() => { getMovieGenres(cardinfo.id).then((data) => setGenres(data)) }, [])
 	const isFavourite = favourites.find((favmovie) => favmovie.id === cardinfo.id)
 	return (
-		<Link to={'/' + String(cardinfo.id)} className='main__item'>
+		<a href={'/' + String(cardinfo.id)} className='main__item'>
 			<div className={cardinfo.poster_path ? 'item__img-wrapper' : 'item__img-wrapper item__img-wrapper--empty'}>
 				{cardinfo.poster_path && <img src={'https://image.tmdb.org/t/p/w300' + cardinfo.poster_path} alt={cardinfo.title} />}
 				{!cardinfo.poster_path && <NotFound />}
@@ -33,7 +33,7 @@ export const Card = ({ cardinfo, isTrends, favourites }: Card) => {
 				<ul className='item__genres'>
 					{genres.map((genre) => <li key={genre} className='item__genre'>{genre}</li>)}
 				</ul></div>
-		</Link>
+		</a>
 
 	)
 }
