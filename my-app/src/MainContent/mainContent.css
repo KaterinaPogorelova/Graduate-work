@@ -11,7 +11,7 @@
 
 .main__show-btn {
 	display: block;
-	margin: 65px auto;
+	margin: 65px auto 0;
 	background: #323537;
 	border-radius: 40px;
 	padding: 8px 54px 8px 24px;

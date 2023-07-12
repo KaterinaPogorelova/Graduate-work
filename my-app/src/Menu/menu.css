@@ -1,9 +1,6 @@
-.side--content {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	min-height: calc(100vh - 160px);
-}
+/* .side--content {
+	min-height: calc(100vh - 160px); 
+}*/
 
 .menu {
 	padding-left: 65px;
@@ -45,9 +42,9 @@
 }
 
 .footer {
-	padding-left: 65px;
 	color: #AFB2B6;
 	font-weight: 500;
+	padding-left: 65px;
 	padding-bottom: 75px;
 }
 

@@ -42,6 +42,5 @@ export const Menu = ({ isOpenedMob, showMenu }: MenuProps) => {
 				<h3 className='menu__title'>Settings</h3>
 			</li></Link>
 		</nav>
-		<p className='footer'>&copy; All Rights Reserved</p>
 	</div>)
 }

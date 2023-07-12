@@ -23,7 +23,6 @@ export const MainContent = ({ filterSort, favourites }: MainParams) => {
 			</div>
 			<button className='main__show-btn' onClick={async () => {
 				setPage(page + 1)
-				/* window.scrollTo(0, 2622) */
 			}} style={theme === 'dark' ? { background: '#323537' } : { background: '#AFB2B6' }}>Show More</button>
 		</main></>)
 }

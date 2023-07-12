@@ -3,7 +3,7 @@
 	width: calc(100% - 367px);
 	justify-content: center;
 	align-items: center;
-	min-height: calc(100vh - 160px);
+	min-height: calc(100vh - 255px);
 }
 
 .favourites__empty-wrapper {

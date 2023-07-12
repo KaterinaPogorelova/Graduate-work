@@ -4,7 +4,11 @@
 	width: 266px;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	border-radius: 20px 20px 0px 0px;
+}
+
+.main__item:hover {
+	transform: scale(1.05);
 }
 
 .item__img-wrapper {

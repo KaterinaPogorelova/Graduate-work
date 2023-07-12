@@ -37,5 +37,6 @@ export const Main = () => {
 			<Menu isOpenedMob={menuOpened} showMenu={showMenu}></Menu>
 			<MainNavigation searchInputValue={searchInputValue} filter={{ sortBy: filter.sortBy, genres: filter.genres, releaseDateGTE: filter.releaseDateGTE, releaseDateLTE: filter.releaseDateLTE, voteGTE: filter.voteGTE, voteLTE: filter.voteLTE }}></MainNavigation>
 		</div>
+		<p className='footer'>&copy; All Rights Reserved</p>
 	</div >)
 }

@@ -36,7 +36,7 @@ export const FullScreenMovie = ({ addFavs, favourites, removeFav }: FullScreenPr
 		<div className='fullScreen'>
 			<div className="fullScreen__mobile--view">
 				<ul className='fullScreen__genres'>
-					{genres.map((genre) => <li className='fullScreen__genre'>{genre}</li>)}
+					{genres.map((genre) => <li className='fullScreen__genre' key={genre}>{genre}</li>)}
 				</ul>
 				<h1 className='fullScreen__title' style={theme === 'dark' ? { color: '#fff' } : { color: '#000' }}>{movie.title}</h1>
 				<div className='fullScreen__rating-wrapper'>
@@ -68,7 +68,7 @@ export const FullScreenMovie = ({ addFavs, favourites, removeFav }: FullScreenPr
 			<div className='fullScreen__info-wrapper'>
 				<div className="fullScreen__not-mobile--view">
 					<ul className='fullScreen__genres'>
-						{genres.map((genre) => <li className='fullScreen__genre'>{genre}</li>)}
+						{genres.map((genre) => <li className='fullScreen__genre' key={genre}>{genre}</li>)}
 					</ul>
 					<h1 className='fullScreen__title' style={theme === 'dark' ? { color: '#fff' } : { color: '#000' }}>{movie.title}</h1>
 					<div className='fullScreen__rating-wrapper'>
