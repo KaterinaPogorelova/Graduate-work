@@ -147,12 +147,6 @@ type SearchedMovieResponse = {
 	total_results: number
 }
 
-type ErrorGenres = {
-	success: boolean,
-	status_code: number,
-	status_message: string
-}
-
 export type FilterParams = {
 	sortBy?: 'vote_average.desc' | 'primary_release_date.desc',
 	genres?: string,

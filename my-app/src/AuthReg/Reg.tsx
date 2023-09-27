@@ -1,5 +1,4 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { RegRedirect } from './RegRedirect'
 import './authReg.css'
 import { postUser } from '../auth'
 import { useState, useContext } from 'react'

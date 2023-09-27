@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import './settings.css'
 import { Switch } from '@mui/material'
-import { Passwords, changeName, changePassword, checkMe } from '../auth';
+import { changeName, changePassword, checkMe } from '../auth';
 import { ChangeThemeContext, ThemeContext } from '../context';
 import { useNavigate } from 'react-router-dom';
 

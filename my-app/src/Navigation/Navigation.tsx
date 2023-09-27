@@ -3,7 +3,6 @@ import { Main } from '../Main/Main';
 import { Auth } from '../AuthReg/Auth';
 import { Reg } from '../AuthReg/Reg';
 import { RegRedirect } from '../AuthReg/RegRedirect';
-import { useState } from 'react';
 import { Activate } from '../AuthReg/Activate';
 
 export const Navigation = () => {

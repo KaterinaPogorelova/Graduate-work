@@ -2,13 +2,13 @@ import './favourites.css'
 import card from './emptyCard.png'
 import { ReactComponent as AddBtn } from './image-upload.svg'
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
 import { DetailedMovie } from '../getMovies'
 import { Card } from '../Card/Card'
 
 type FavsProps = {
 	favourites: DetailedMovie[]
 }
+
 export const Favourites = ({ favourites }: FavsProps) => {
 	return (<div className={favourites.length === 0 ? 'main favourites--empty' : 'main'}>
 		{favourites.length === 0 && <div className='favourites__empty-wrapper'>

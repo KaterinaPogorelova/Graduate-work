@@ -1,5 +1,3 @@
-import { url } from "inspector"
-
 const DOMAIN = 'https://studapi.teachmeskills.by'
 const ADDUSER = '/auth/users/'
 const ACTIVATEUSER = '/auth/users/activation/'

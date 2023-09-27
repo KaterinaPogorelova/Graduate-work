@@ -1,6 +1,7 @@
 import './authReg.css'
 import { useContext } from 'react'
 import { ThemeContext } from '../context'
+
 export const RegRedirect = () => {
 	const theme = useContext(ThemeContext)
 	return (<div className="auth__container" style={theme === 'dark' ? { background: '#000' } : { background: '#fff' }}>

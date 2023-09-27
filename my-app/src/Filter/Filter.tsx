@@ -3,13 +3,14 @@ import { ReactComponent as Cross } from './cross.svg'
 import { useEffect, useState, useContext } from 'react'
 import { getGenres, getCountries, FilterParams } from '../getMovies'
 import { ThemeContext } from '../context'
-type Filter = {
+
+type FilterProps = {
 	isVisible?: boolean,
 	closeFilter: () => void,
 	setFilterParams: ({ sortBy, genres, releaseDateGTE, releaseDateLTE, voteGTE, voteLTE }: FilterParams) => void
 }
 
-export const Filter = ({ isVisible, closeFilter, setFilterParams }: Filter) => {
+export const Filter = ({ isVisible, closeFilter, setFilterParams }: FilterProps) => {
 	const [isShown, setisShown] = useState(isVisible)
 	const [genres, setGenres] = useState<{ id: number, name: string }[]>([])
 	const [countries, setCountries] = useState<string[]>([])
@@ -35,11 +36,11 @@ export const Filter = ({ isVisible, closeFilter, setFilterParams }: Filter) => {
 		<div className='filter__sort-by'>
 			<h3 className='filter__subtitle' style={theme === 'dark' ? { color: '#fff' } : { color: '#000' }}>Sort By</h3>
 			<div className='sort-by__buttons-wrapper'>
-				<button className={activeSort === 'Rating' ? (theme === 'dark' ? 'sort-by__button--dark sort-by__button--active-dark' : 'sort-by__button--light sort-by__button--active-light') : (theme == 'dark' ? 'sort-by__button--dark' : 'sort-by__button--light')} onClick={() => {
+				<button className={activeSort === 'Rating' ? (theme === 'dark' ? 'sort-by__button--dark sort-by__button--active-dark' : 'sort-by__button--light sort-by__button--active-light') : (theme === 'dark' ? 'sort-by__button--dark' : 'sort-by__button--light')} onClick={() => {
 					setActiveSort('Rating')
 					setSort('vote_average.desc')
 				}}>Rating</button>
-				<button className={activeSort === 'Year' ? (theme === 'dark' ? 'sort-by__button--dark sort-by__button--active-dark' : 'sort-by__button--light sort-by__button--active-light') : (theme == 'dark' ? 'sort-by__button--dark' : 'sort-by__button--light')} onClick={() => {
+				<button className={activeSort === 'Year' ? (theme === 'dark' ? 'sort-by__button--dark sort-by__button--active-dark' : 'sort-by__button--light sort-by__button--active-light') : (theme === 'dark' ? 'sort-by__button--dark' : 'sort-by__button--light')} onClick={() => {
 					setActiveSort('Year')
 					setSort('primary_release_date.desc')
 				}}>Year</button>

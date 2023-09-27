@@ -1,6 +1,5 @@
 import './header.css'
 import { SearchInput } from './SearchInput'
-import { ReactComponent as Logo } from './pixema.svg';
 import { ReactComponent as Logo1 } from './pix.svg'
 import { ReactComponent as Logo2w } from './ema.svg'
 import { ReactComponent as Logo2b } from './emab.svg'

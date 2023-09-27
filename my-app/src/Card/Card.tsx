@@ -7,19 +7,19 @@ import { ReactComponent as NotFound } from '../FullScreenMovie/image-not-found-i
 import { ReactComponent as Fav } from './Favs.svg'
 import { ThemeContext } from '../context'
 
-type Card = {
+type CardProps = {
 	cardinfo: Movie | DetailedMovie;
 	isTrends?: boolean;
 	favourites: DetailedMovie[]
 }
 
-export const Card = ({ cardinfo, isTrends, favourites }: Card) => {
+export const Card = ({ cardinfo, isTrends, favourites }: CardProps) => {
 	const [genres, setGenres] = useState<string[]>([])
 	const theme = useContext(ThemeContext)
 	useEffect(() => { getMovieGenres(cardinfo.id).then((data) => setGenres(data)) }, [])
 	const isFavourite = favourites.find((favmovie) => favmovie.id === cardinfo.id)
 	return (
-		<a href={'/' + String(cardinfo.id)} className='main__item'>
+		<Link to={'/' + String(cardinfo.id)} className='main__item'>
 			<div className={cardinfo.poster_path ? 'item__img-wrapper' : 'item__img-wrapper item__img-wrapper--empty'}>
 				{cardinfo.poster_path && <img src={'https://image.tmdb.org/t/p/w300' + cardinfo.poster_path} alt={cardinfo.title} />}
 				{!cardinfo.poster_path && <NotFound />}
@@ -33,7 +33,7 @@ export const Card = ({ cardinfo, isTrends, favourites }: Card) => {
 				<ul className='item__genres'>
 					{genres.map((genre) => <li key={genre} className='item__genre'>{genre}</li>)}
 				</ul></div>
-		</a>
+		</Link>
 
 	)
 }

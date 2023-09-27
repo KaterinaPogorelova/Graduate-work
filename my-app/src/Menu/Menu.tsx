@@ -7,7 +7,6 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Burger } from '../Header/Burger'
 import { checkMe } from '../auth'
-import { SelectedUser } from '../SelectedUser/SelectedUser'
 
 type MenuProps = {
 	isOpenedMob?: boolean;
